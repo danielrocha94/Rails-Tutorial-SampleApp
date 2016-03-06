@@ -11,7 +11,14 @@ module SessionsHelper
   end
 
   # Returns true if the user is logged in, false otherwise.
-  def logged_in
+  def logged_in?
     !current_user.nil?
+  end
+
+  def logged_out
+    cookies.delete(:secureusertokens)
+    reset_session
+    redirect_to root_url
+    flash[:success] = 'Disconnected successfully!'
   end
 end

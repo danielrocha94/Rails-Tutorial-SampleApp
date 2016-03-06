@@ -14,6 +14,7 @@ class UsersController < ApplicationController
      # for a message indicating a successful result
      flash[:success] = "Welcome to the Sample App!"
      redirect_to @user
+     log_in(@user)
      #alternate form: redirect_to user_url(@user)
     else
       render 'new'

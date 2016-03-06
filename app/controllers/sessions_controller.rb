@@ -15,5 +15,6 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    logged_out
   end
 end
