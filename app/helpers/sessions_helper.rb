@@ -3,6 +3,7 @@ module SessionsHelper
   # Logs in the given user
   def log_in(user)
     session[:user_id] = user.id
+    flash[:success] = "Connected successfully! Welcome Back #{user.name}"
   end
 
   # Returns the user corresponding to the remember token cookie.
@@ -23,13 +24,17 @@ module SessionsHelper
     !current_user.nil?
   end
 
-  def logged_out
-    cookies.delete(:secureusertokens)
-    reset_session
-    redirect_to root_url
-    flash[:success] = 'Disconnected successfully!'
+  def forget(user)
+    user.forget
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
   end
 
+  def log_out
+    forget(current_user)
+    session.delete(:user_id)
+    @current_user = nil
+  end
   # Remembers a user in a persistent session.
   def remember(user)
     user.remember

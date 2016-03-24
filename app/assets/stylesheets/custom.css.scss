@@ -82,6 +82,22 @@ textarea {
 
 /* forms */
 
+//class selector
+.checkbox{
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span{
+    margin-left: 20px;
+    font-weight: normal;
+  }
+
+}
+//id selector
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
